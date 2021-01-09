@@ -1,27 +1,25 @@
 from sploitkit import *
+import pathlib 
+import os,sys
 
-
+'''
 class CommandWithOneArg(Command):
     """ Description here """
-    level = "module"
+    level = "general"
     single_arg = True
 
     def complete_values(self):
         #TODO: compute the list of possible values
-        return ['find']
+        return []
 
     def run(self):
         #TODO: compute results here
         pass
 
-    def ls(self):
-        pass
-        
     def validate(self, value):
         #TODO: validate the input value
         if value not in self.complete_values():
             raise ValueError("invalid value")
-
 
 class CommandWithTwoArgs(Command):
     """ Description here """
@@ -38,3 +36,29 @@ class CommandWithTwoArgs(Command):
     def run(self):
         #TODO: compute results here
         pass
+
+'''
+
+class reset(Command):
+    level = "general"
+    aliases = ["restart","reload"]
+    def run(self):
+        os.execl(sys.executable, sys.executable, * sys.argv)
+
+
+class q(Command):
+    """ Exit the console """
+    level = "general"
+    #aliases = ["quit"]
+          
+    def run(self):
+        raise ConsoleExit
+
+class pwd(Command):
+    """ Exit the console """
+    level = "general"
+    #aliases = ["quit"]
+          
+    def run(self):
+        print(pathlib.Path(__file__).parent.absolute())
+

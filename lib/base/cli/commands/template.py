@@ -1,5 +1,6 @@
 from sploitkit import *
 
+'''
 
 class CommandWithOneArg(Command):
     """ Description here """
@@ -35,3 +36,5 @@ class CommandWithTwoArgs(Command):
     def run(self):
         #TODO: compute results here
         pass
+
+'''
