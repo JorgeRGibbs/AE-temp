@@ -1,0 +1,103 @@
+.
+├── assets
+│   ├── JS2PDF_Injector
+│   │   ├── JS2PDFInjector-1.0.jar
+│   │   ├── LICENSE
+│   │   ├── nbactions.xml
+│   │   ├── pom.xml
+│   │   ├── README.md
+│   │   └── src
+│   │       └── main
+│   │           └── java
+│   │               └── com
+│   │                   └── cornerpirate
+│   │                       └── js2pdfinjector
+│   │                           └── JS2PDFInjector.java
+│   └── JS2PDFInjector
+│       ├── JS2PDFInjector-1.0.jar
+│       ├── LICENSE
+│       ├── nbactions.xml
+│       ├── pom.xml
+│       ├── README.md
+│       └── src
+│           └── main
+│               └── java
+│                   └── com
+│                       └── cornerpirate
+│                           └── js2pdfinjector
+│                               └── JS2PDFInjector.java
+├── banners
+│   └── ban
+├── commands
+│   ├── general.py
+│   ├── __pycache__
+│   │   ├── find.cpython-38.pyc
+│   │   ├── find.cpython-39.pyc
+│   │   ├── general.cpython-38.pyc
+│   │   ├── saguaro.cpython-38.pyc
+│   │   ├── saguaro.cpython-39.pyc
+│   │   ├── template.cpython-38.pyc
+│   │   ├── template.cpython-39.pyc
+│   │   ├── test.cpython-38.pyc
+│   │   └── test.cpython-39.pyc
+│   ├── saguaro.py
+│   └── template.py
+├── file
+├── js_injected_plan2021.pdf
+├── js_injected_test.pdf
+├── mail.py
+├── main.py
+├── modules
+│   ├── CommandAndControl
+│   │   ├── __pycache__
+│   │   │   └── T1104.cpython-38.pyc
+│   │   └── T1104.py
+│   ├── CredentialAccess
+│   │   ├── __pycache__
+│   │   │   └── T1539.cpython-38.pyc
+│   │   └── T1539.py
+│   ├── InitialAccess
+│   │   ├── __pycache__
+│   │   │   └── T1193.cpython-38.pyc
+│   │   └── T1566
+│   │       ├── 001
+│   │       │   ├── craft_email.py
+│   │       │   ├── eml_templates
+│   │       │   │   └── template1.eml
+│   │       │   ├── JSPDFInjection.py
+│   │       │   └── __pycache__
+│   │       │       └── JSPDFInjection.cpython-38.pyc
+│   │       ├── 002
+│   │       ├── 003
+│   │       └── __pycache__
+│   │           └── JSPDFInjection.cpython-38.pyc
+│   ├── js_injected_test.pdf
+│   ├── Persistence
+│   │   ├── __pycache__
+│   │   │   └── T1060.cpython-38.pyc
+│   │   └── T1060.py
+│   ├── plan2021.pdf
+│   ├── __pycache__
+│   │   ├── apt38.cpython-38.pyc
+│   │   ├── apt38.cpython-39.pyc
+│   │   ├── lazarus.cpython-38.pyc
+│   │   ├── lazarus.cpython-39.pyc
+│   │   ├── mail.cpython-39.pyc
+│   │   ├── saguaro.cpython-38.pyc
+│   │   ├── saguaro.cpython-39.pyc
+│   │   ├── T1104.cpython-38.pyc
+│   │   ├── T1539.cpython-38.pyc
+│   │   ├── T160.cpython-38.pyc
+│   │   ├── template.cpython-38.pyc
+│   │   ├── template.cpython-39.pyc
+│   │   ├── test.cpython-38.pyc
+│   │   └── test.cpython-39.pyc
+│   └── template.py
+├── plan2021.pdf
+├── __pycache__
+│   ├── main.cpython-38.pyc
+│   └── main.cpython-39.pyc
+├── README
+└── requirements.txt
+
+36 directories, 64 files

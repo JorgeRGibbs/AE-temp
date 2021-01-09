@@ -1,3 +1,6 @@
 [submodule "lib/base/cli/assets/JS2PDF_Injector"]
 	path = lib/base/cli/assets/JS2PDF_Injector
 	url = https://github.com/cornerpirate/JS2PDFInjector
+[submodule "lib/base/cli/tools/JS2PDFInjector_"]
+	path = lib/base/cli/tools/JS2PDFInjector_
+	url = https://github.com/cornerpirate/JS2PDFInjector

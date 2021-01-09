@@ -41,7 +41,7 @@ class JS2PDFInjection(Module):
 		attachment = "/home/kali/AE-temp/PruebasTT/InitialAccess/plan2021.pdf"
 		js = "/home/kali/AE-temp/PruebasTT/InitialAccess/test.js"
 		
-		subprocess.call(['java','-jar',cwd+'/assets/JS2PDFInjector/JS2PDFInjector-1.0.jar',attachment,js])
+		subprocess.call(['java','-jar',cwd+'/tools/JS2PDFInjector/JS2PDFInjector-1.0.jar',attachment,js])
 
 		'''
 		# Create a text/plain message

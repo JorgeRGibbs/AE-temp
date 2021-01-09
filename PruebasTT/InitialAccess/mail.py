@@ -50,5 +50,11 @@ msg.attach(att)
 s = smtplib.SMTP(host='ecorp.local')
 #s.starttls()
 #s.login('xyz@gmail.com','xyzpassword')
+filename = '/home/kali/AE-temp/lib/base/cli/modules/InitialAccess/T1566/001/eml_templates/test.eml'
+with open(filename) as f:
+	message = f.read()
+
 s.sendmail('wwhite@ecorp.local',['Administrator@ecorp.local'], msg.as_string())
+s.sendmail('wwhite@ecorp.local',['Administrator@ecorp.local'], message)
+
 s.quit()
