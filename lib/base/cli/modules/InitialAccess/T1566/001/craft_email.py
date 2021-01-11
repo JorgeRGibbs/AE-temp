@@ -91,7 +91,7 @@ class send_email(Module):
 		_from = 'wwhite@ecorp.local'
 		to = 'Administrator@ecorp.local'
 		body_file = '/home/kali/AE-temp/Prueba/inputs/body.txt'
-		attachment = '/home/kali/AE-temp/Prueba/inputs/plan2021.pdf'
+		attachment = '/home/kali/AE-temp/Prueba/inputs/js_injected_plan2021.pdf'
 		smtp = 'ecorp.local'
 		#multi_rec = 'false'
 		rec_list = '/home/kali/AE-temp/Prueba/inputs/addrlist.txt'

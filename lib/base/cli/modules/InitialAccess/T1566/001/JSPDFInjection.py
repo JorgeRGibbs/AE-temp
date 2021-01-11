@@ -38,8 +38,8 @@ class JS2PDFInjection(Module):
 		js = ''.join(list(self.config.get('JS_Code')))
 
 		#TEST ARGUMENTS
-		attachment = "/home/kali/AE-temp/PruebasTT/InitialAccess/plan2021.pdf"
-		js = "/home/kali/AE-temp/PruebasTT/InitialAccess/test.js"
+		attachment = "/home/kali/AE-temp/Prueba/inputs/plan2021.pdf"
+		js = "/home/kali/AE-temp/Prueba/inputs/test.js"
 		
 		subprocess.call(['java','-jar',cwd+'/tools/JS2PDFInjector/JS2PDFInjector-1.0.jar',attachment,js])
 
