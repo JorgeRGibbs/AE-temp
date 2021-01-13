@@ -1,9 +1,6 @@
-#from procedure.procedure import Procedure
 from sploitkit import *
 import pathlib 
 import os,sys
-
-#from procedure.procedure import Procedure
 
 '''
 class CommandWithOneArg(Command):
@@ -64,12 +61,4 @@ class pwd(Command):
           
     def run(self):
         print(pathlib.Path(__file__).parent.absolute())
-
-class adversaries(Command):
-    level = "general"
-
-    def run(self):
-        pass
-
-
 

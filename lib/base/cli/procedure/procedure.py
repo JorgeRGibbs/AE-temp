@@ -11,8 +11,8 @@ class MyFirstModule(Module):
         pass
 """
 
-
-class Procedure(Module):
+'''
+class MODULE(Module):
     """ Description here 
 
     Author:  your name (your email)
@@ -29,5 +29,6 @@ class Procedure(Module):
     modified			= ''	#Date the technique was last modified
     sub_techiniques 	= []	#Subtechniques of this technique 
 
-    def run(self):
-        pass
+    #def run(self):
+    #    pass
+'''

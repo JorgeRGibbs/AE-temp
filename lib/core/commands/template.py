@@ -1,14 +1,10 @@
-#from procedure.procedure import Procedure
 from sploitkit import *
-import pathlib 
-import os,sys
-
-#from procedure.procedure import Procedure
 
 '''
+
 class CommandWithOneArg(Command):
     """ Description here """
-    level = "general"
+    level = "module"
     single_arg = True
 
     def complete_values(self):
@@ -23,6 +19,7 @@ class CommandWithOneArg(Command):
         #TODO: validate the input value
         if value not in self.complete_values():
             raise ValueError("invalid value")
+
 
 class CommandWithTwoArgs(Command):
     """ Description here """
@@ -41,35 +38,3 @@ class CommandWithTwoArgs(Command):
         pass
 
 '''
-
-class reset(Command):
-    level = "general"
-    aliases = ["restart","reload"]
-    def run(self):
-        os.execl(sys.executable, sys.executable, * sys.argv)
-
-
-class q(Command):
-    """ Exit the console """
-    level = "general"
-    #aliases = ["quit"]
-          
-    def run(self):
-        raise ConsoleExit
-
-class pwd(Command):
-    """ Exit the console """
-    level = "general"
-    #aliases = ["quit"]
-          
-    def run(self):
-        print(pathlib.Path(__file__).parent.absolute())
-
-class adversaries(Command):
-    level = "general"
-
-    def run(self):
-        pass
-
-
-
