@@ -1,7 +1,7 @@
 from sploitkit import *
 import os
 import subprocess
-from template import Procedure
+#from procedure import Procedure
 
 path = os.path.dirname(os.path.realpath(__file__))
 cwd = os.getcwd()
@@ -20,9 +20,9 @@ class JS2PDFInjection(Module):
 	techniqueName 		= ''	#Name of the technique
 	sub_techiniques 	= []	#Subtechniques of this technique 
 
-	self.groups = ['saguaro']
-	self.tactic = 'Initial Access'
-	self.techniqueID = 'T1566.001'
+	#self.groups = ['saguaro']
+	#self.tactic = 'Initial Access'
+	#self.techniqueID = 'T1566.001'
 
 	#MODULE OPTIONS
 	config  = Config({
@@ -39,17 +39,15 @@ class JS2PDFInjection(Module):
 	            #set_callback=lambda o: o.root._set_logging(o.value),
 	        ): "~/.{appname}",
 	        Option(
-	            'a',
-	            "Javascript Code that will be injected into the attachment",
-	            True,
+	            'OUTPUT',
+	            "Output file path (optional)",
+	            False,
 	            #set_callback=lambda o: o.root._set_logging(o.value),
 	        ): "~/.{appname}",
 	    })
 
 
 	def run(self):
-
-
 		attachment = ''.join(list(self.config.get('ATTACHMENT')))
 		js = ''.join(list(self.config.get('JS_Code')))
 
@@ -57,9 +55,9 @@ class JS2PDFInjection(Module):
 		attachment = "/home/kali/AE-temp/Prueba/inputs/plan2021.pdf"
 		js = "/home/kali/AE-temp/Prueba/inputs/test.js"
 		
-		subprocess.call(['java','-jar',cwd+'/tools/JS2PDFInjector/JS2PDFInjector-1.0.jar',attachment,js])
+		subprocess.call(['java','-jar',cwd+'/aux/JS2PDFInjector/JS2PDFInjector-1.0.jar',attachment,js])
 	
-	def info(self):
+	#def info(self):
 
 
 		'''

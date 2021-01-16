@@ -1,4 +1,4 @@
-#from procedure.procedure import Procedure
+#import procedure
 from sploitkit import *
 import pathlib 
 import os,sys
@@ -43,6 +43,7 @@ class CommandWithTwoArgs(Command):
 '''
 
 class reset(Command):
+    """ Restart the console """
     level = "general"
     aliases = ["restart","reload"]
     def run(self):
@@ -52,23 +53,29 @@ class reset(Command):
 class q(Command):
     """ Exit the console """
     level = "general"
-    #aliases = ["quit"]
+    aliases = ["quit", "exit"]
           
     def run(self):
         raise ConsoleExit
 
 class pwd(Command):
-    """ Exit the console """
+    """ Show current path """
     level = "general"
-    #aliases = ["quit"]
-          
+
     def run(self):
         print(pathlib.Path(__file__).parent.absolute())
+
+class ls(Command):
+    level = "general"
+
+    def run(self):
+        os.system('ls -la')
 
 class adversaries(Command):
     level = "general"
 
     def run(self):
+        #print(Procedure.__subclasses__())
         pass
 
 

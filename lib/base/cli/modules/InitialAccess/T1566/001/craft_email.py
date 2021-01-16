@@ -16,7 +16,7 @@ from email.mime.multipart import MIMEMultipart
 from termcolor import colored
 from template import Procedure
 
-class send_email(Procedure):
+class send_email(Module):
 	""" Module used to send simple emails.	
 
 	Author:  your name (your email)

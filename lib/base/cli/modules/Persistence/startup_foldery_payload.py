@@ -3,7 +3,7 @@ import os
 import subprocess
 from template import Procedure
 
-class executing_payload(Procedure):
+class executing_payload(Module):
 	""" Module used to create an exe that can execute powershell payloads.
 
 	Author:  your name (your email)

@@ -2,7 +2,7 @@ from sploitkit import *
 
 """
 class MyFirstModule(Module):
-    \""" Description here 
+    \""" 
 
     Author:  your name (your email)
     Version: 1.0
@@ -11,9 +11,9 @@ class MyFirstModule(Module):
         pass
 """
 
-
+'''
 class Procedure(Module):
-    """ test module
+    """ Test module
 
     Author:  your name (your email)
     Version: 1.0
@@ -31,3 +31,4 @@ class Procedure(Module):
 
     #def run(self):
     #    pass
+'''

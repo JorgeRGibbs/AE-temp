@@ -13,7 +13,7 @@ class MyFirstModule(Module):
 
 
 class Procedure(Module):
-    """ Description here 
+    """ test module
 
     Author:  your name (your email)
     Version: 1.0
