@@ -23,13 +23,13 @@ class MySploitConsole(FrameworkConsole):
     sources = {
         'banners': "banners",
         'libraries': None,
-        'entities':['/home/kali/AE-temp/lib/base/modules/','/home/kali/AE-temp/lib/ui/commands/']
+        'entities':['base/modules','/home/kali/AE-temp/lib/ui/cli']
     }
     pass
 
 
 if __name__ == '__main__':
     MySploitConsole(
-        "AdversaryEmulator",
+        "TT 2019-B102: AdversaryEmulator",
         #TODO: configure your console settings
     ).start()

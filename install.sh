@@ -4,7 +4,7 @@ RED='\033[0;31m'
 GRN='\033[0;32m'
 YLL='\033[1;33m'
 NC='\033[0m' # No Color
-OSADDITIONS="git python-pip python3-pip mingw-w64 librust-vcpkg-dev"
+OSADDITIONS="git python-pip python3-pip mingw-w64 librust-vcpkg-dev terminator"
 UN=$(ps -o user= $(ps -o ppid= $(ps -o ppid= $(ps -o ppid= $PPID))))
 
 
@@ -37,7 +37,7 @@ echo -e "${YLL}[+]Instalando dependencias${NC}"
 #echo -e "${YLL}[+]Installing dependencies${NC}"
 sudo apt-get -qq install $OSADITIONS
 #ASSETS
-cd ./lib/base/aux/
+cd bin/aux/
 echo -e "${YLL}[+]Instalando TransportC2${NC}"
 #echo -e "${YLL}[+]Installing TransportC2 /lib/base/cli/aux/transportc2${NC}"
 git clone https://github.com/todmephis/transportc2.git #./lib/base/cli/aux/transportc2
