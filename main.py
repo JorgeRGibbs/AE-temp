@@ -23,7 +23,7 @@ class MySploitConsole(FrameworkConsole):
     sources = {
         'banners': "banners",
         'libraries': None,
-        'entities':['adversaries/TTPs','lib/ui/cli']
+        'entities':['adversaries/TTPs','lib/ui/cli','adversaries/']
     }
     pass
 
