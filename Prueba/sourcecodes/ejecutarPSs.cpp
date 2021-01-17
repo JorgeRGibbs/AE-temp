@@ -7,7 +7,7 @@
 		#include <lmcons.h>
 		#include <cstring>
 		#define PSSCRIPT "client.ps1"
-		#define IPADDR "10.10.1.13"
+		#define IPADDR "192.168.114.129"
 		using namespace std;
 
 		int main(void){

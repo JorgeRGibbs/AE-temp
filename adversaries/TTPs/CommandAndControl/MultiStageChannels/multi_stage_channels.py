@@ -50,7 +50,7 @@ class multi_stage_channels(Module):
 
 
 		c2client = "client.ps1"
-		lhost = "10.10.1.13"
+		lhost = "192.168.114.129"
 		name = 'ejecutarPSs.cpp'
 		fullname = parent_path+name
 		exename = "ejecuta"

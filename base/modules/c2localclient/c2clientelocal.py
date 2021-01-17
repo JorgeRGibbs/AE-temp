@@ -53,7 +53,7 @@ def getClientes(sesion):
 sesiones_activas = 0
 
 try:
-	iniciaTransportC2()
+	#iniciaTransportC2()
 	with requests.Session() as remoto:
 		#remoto.proxies = proxies
 		remoto.verify = False
