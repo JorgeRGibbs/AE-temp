@@ -23,7 +23,7 @@ class MySploitConsole(FrameworkConsole):
     sources = {
         'banners': "banners",
         'libraries': None,
-        'entities':['base/modules','/home/kali/AE-temp/lib/ui/cli']
+        'entities':['adversaries/TTPs','lib/ui/cli']
     }
     pass
 
