@@ -31,7 +31,7 @@ def si_o_no(question):
             return False
 
 def abrirSesionInteractiva(idsess, tipo):
-	subprocess.Popen(['terminator', '--new-tab', '-x', 'python3', 'base/modules/c2localclient/c2clientelocalcmd.py', str(idsess), str(tipo)])
+	subprocess.Popen(['terminator', '--new-tab', '-x', 'python3', './c2clientelocalcmd.py', str(idsess), str(tipo)])
 	#subprocess.system("python3 c2clientelocalcmd.py {} {}".format(idsess,tipo))
 
 def getClientes(sesion):
