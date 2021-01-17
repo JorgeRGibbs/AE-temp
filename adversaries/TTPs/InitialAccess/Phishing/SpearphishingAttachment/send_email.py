@@ -14,7 +14,6 @@ from email.mime import multipart
 from email.mime import text
 from email.mime.multipart import MIMEMultipart
 from termcolor import colored
-from template import Procedure
 
 class send_email(Module):
 	""" Module used to send simple emails.	

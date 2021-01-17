@@ -1,7 +1,6 @@
 from sploitkit import *
 import os
 import subprocess
-from template import Procedure
 
 class boot_or_logon_autostart_execution(Module):
 	""" Module used to create an exe that can execute powershell payloads.

