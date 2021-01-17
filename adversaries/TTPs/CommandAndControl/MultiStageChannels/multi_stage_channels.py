@@ -13,11 +13,11 @@ class multi_stage_channels(Module):
 	#MODULE OPTIONS
 	config  = Config({
         Option(
-            'OPT', #option
-            "Description", #description
-            True,	#Required = True, Optional = False
-            #set_callback=lambda o: o.root._set_app_folder(), #execute a function if required
-        ): "default", #Default value
+            'OPT', 												#option
+            "Description", 										#description
+            True,												#Required = True, Optional = False
+            #set_callback=lambda o: o.root._set_app_folder(), 	#execute a function if required
+        ): "default", 											#Default value	
     })
 
 	def run(self):
@@ -26,6 +26,8 @@ class multi_stage_channels(Module):
 		parent_webroot_path = "Prueba/webroot/"
 
 		c2client = ''.join(list(self.config.get('OPT'))) #Assign option value to variable
+
+		#TEST ARGUMENTS
 
 		c2client = "client.ps1"
 		'''

@@ -87,14 +87,13 @@ class send_email(Module):
 		rec_list   = ''.join(list(self.config.get('RECIPIENT_LIST')))
 		
 		#TEST ARGUMENTS
-		
 		subject = 'Nuevo programa de sueldos 2021.'
 		_from = 'wwhite@ecorp.local'
 		to = 'Administrator@ecorp.local'
 		body_file = '/home/kali/AE-temp/Prueba/inputs/body.txt'
 		attachment = '/home/kali/AE-temp/Prueba/inputs/js_injected_plan2021.pdf'
 		smtp = 'ecorp.local'
-		#multi_rec = 'false'
+		multi_rec = 'true'
 		rec_list = '/home/kali/AE-temp/Prueba/inputs/addrlist.txt'
 		
 		
@@ -107,8 +106,8 @@ class send_email(Module):
 		msg['From']     = _from
 		msg['To'] 		= to
 
-		print(colored('[+]','green'),'SENT FROM: '+_from)
-		print(colored('[+]','green'),'SUBJECT: '+subject)
+		print(colored('[+]','green'),'DE: '+_from)
+		print(colored('[+]','green'),'ASUNTO: '+subject)
 
 		# The main body is just another attachment
 		body = email.mime.text.MIMEText(body)
@@ -124,7 +123,7 @@ class send_email(Module):
 			fp.close()
 			att.add_header('Content-Disposition','attachment',filename=attachment.split('/')[-1])
 			msg.attach(att)
-			print(colored('[+]','green'),'ATTACHED: '+attachment)
+			print(colored('[+]','green'),'ADJUNTO: '+attachment)
 		else: 
 			pass
 
@@ -132,14 +131,14 @@ class send_email(Module):
 		s = smtplib.SMTP(host=smtp)
 		if multi_rec == 'false':
 			s.sendmail(_from,[to], msg.as_string())
-			print(colored('[+]','green'),'TO: '+to)
+			print(colored('[+]','green'),'PARA: '+to)
 
 		if multi_rec == 'true':
 			addr_list = [line.rstrip('\n') for line in open(rec_list)]
 			#f = open(rec_list,'r')
 			#addr_list = f.readlines()
 			s.sendmail(_from,addr_list, msg.as_string())
-			print(colored('[+]','green'),'TO : ')
+			print(colored('[+]','green'),'PARA : ')
 			for i in addr_list:
 				print(colored('[+]','green'), i)
 		s.quit()

@@ -2,6 +2,7 @@ from sploitkit import *
 import os
 import subprocess
 #from procedure import Procedure
+from termcolor import colored
 
 path = os.path.dirname(os.path.realpath(__file__))
 cwd = os.getcwd()
@@ -43,16 +44,30 @@ class JS2PDFInjection(Module):
 	            "Output file path (optional)",
 	            False,
 	            #set_callback=lambda o: o.root._set_logging(o.value),
-	        ): "~/.{appname}",
+	        ): " ",
 	    })
 
 
 	def run(self):
 		attachment = ''.join(list(self.config.get('ATTACHMENT')))
 		js = ''.join(list(self.config.get('JS_Code')))
+		out = ''.join(list(self.config.get('OUTPUT')))
+
 
 		#TEST ARGUMENTS
 		attachment = "/home/kali/AE-temp/Prueba/inputs/plan2021.pdf"
 		js = "/home/kali/AE-temp/Prueba/inputs/test.js"
+		out = "/home/kali/AE-temp/Prueba/inputs/"
+
+
+		print(colored('[+]','green'),'ARCHIVO: '+ attachment)
+		print(colored('[+]','green'),'CODIGO JS: '+ js)
+		print(colored('[+]','green'),'Archivo guardado en: '+ out)
+		subprocess.call(['java','-jar',cwd+'/lib/bin/aux/JS2PDFInjector/JS2PDFInjector-1.0.jar',attachment,js],stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
+
+
+
+
+
+
 		
-		subprocess.call(['java','-jar',cwd+'/lib/bin/aux/JS2PDFInjector/JS2PDFInjector-1.0.jar',attachment,js])
