@@ -14,7 +14,7 @@ class boot_or_logon_autostart_execution(Module):
 	config  = Config({
         Option(
             'ARCHIVO_PERSISTENCIA',
-            "Archivo que genera la persistencia en el sistema remoto.",
+            "Archivo que generara la persistencia en el sistema remoto.",
             True,
             #set_callback=lambda o: o.root._set_app_folder(),
         ): "persiste.exe"
