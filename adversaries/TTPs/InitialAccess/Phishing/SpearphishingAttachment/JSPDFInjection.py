@@ -29,19 +29,19 @@ class JS2PDFInjection(Module):
 	config  = Config({
 	        Option(
 	            'ATTACHMENT',
-	            "PDF File to be injected with JS code",
+	            "Archivo PDF que sera incrustado con codigo JavaScript.",
 	            True,
 	            set_callback=lambda o: o.root._set_app_folder(),
 	        ): "~/.{appname}",
 	        Option(
 	            'JS_Code',
-	            "Javascript Code that will be injected into the attachment",
+	            "Archivo con codigo en JavaScript que sera incrustado.",
 	            True,
 	            #set_callback=lambda o: o.root._set_logging(o.value),
 	        ): "~/.{appname}",
 	        Option(
 	            'OUTPUT',
-	            "Output file path (optional)",
+	            "Path del archivo de salida. (optional)",
 	            False,
 	            #set_callback=lambda o: o.root._set_logging(o.value),
 	        ): " ",
