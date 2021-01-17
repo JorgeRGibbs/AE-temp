@@ -93,4 +93,4 @@ class multi_stage_channels(Module):
 		print("Ejecutando listener C2.")
 		time.sleep(5)
 		args = ['terminator', '--new-tab', '-x', 'python3', 'base/modules/c2localclient/c2clientelocal.py']
-		subprocess.Popen()
+		subprocess.Popen(args)
