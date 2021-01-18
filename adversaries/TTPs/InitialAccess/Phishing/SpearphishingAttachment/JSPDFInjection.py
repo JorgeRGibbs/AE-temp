@@ -63,7 +63,7 @@ class JS2PDFInjection(Module):
 		print(colored('[+]','green'),'ARCHIVO: '+ attachment)
 		print(colored('[+]','green'),'CODIGO JS: '+ js)
 		print(colored('[+]','green'),'Archivo guardado en: '+ out)
-		subprocess.call(['java','-jar',cwd+'/lib/bin/aux/JS2PDFInjector/JS2PDFInjector-1.0.jar',attachment,js],stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
+		subprocess.call(['java','-jar',cwd+'/bin/aux/JS2PDFInjector/JS2PDFInjector-1.0.jar',attachment,js],stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
 
 
 
